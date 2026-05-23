@@ -11,7 +11,7 @@ hero:
       link: /guide/introduction
     - theme: alt
       text: 在 GitHub 上查看
-      link: https://github.com/flutter/flutter
+      link: https://github.com/liudonjun/Flutter-Knowledge-Base
 
 features:
   - icon: 📚
@@ -31,19 +31,19 @@ features:
 ## 🎯 快速开始
 
 ### 初学者路径
-1. [[Flutter 简介]] - Flutter 简介 - 了解 Flutter 框架
-2. [[环境搭建]] - 环境搭建 - 配置开发环境
-3. [[第一个应用]] - 第一个应用 - 创建 Hello World
+1. [Flutter 简介](/guide/introduction) - 了解 Flutter 框架
+2. [环境搭建](/guide/setup) - 配置开发环境
+3. [第一个应用](/guide/first-app) - 创建 Hello World
 
 ### 进阶路径
-1. [[Widget 系统]] - Widget 系统 - 掌握 Widget 核心
-2. [[状态管理]] - 状态管理 - 学习状态管理方案
-3. [[导航与路由]] - 导航与路由 - 实现页面导航
+1. [Widget 系统](/guide/widgets) - 掌握 Widget 核心
+2. [状态管理](/guide/state-management) - 学习状态管理方案
+3. [导航与路由](/guide/navigation) - 实现页面导航
 
 ### 高级路径
-1. [[架构概览]] - 架构概览 - 深入理解架构
-2. [[电商应用]] - 电商应用 - 完整项目实战
-3. [[官方资源]] - 官方资源 - 精选学习资源
+1. [架构概览](/core/architecture) - 深入理解架构
+2. [电商应用](/projects/ecommerce) - 完整项目实战
+3. [官方资源](/resources/official) - 精选学习资源
 
 ## 📊 知识库概览
 
@@ -57,3 +57,4 @@ features:
 - [Flutter 官方文档](https://flutter.dev/docs)
 - [Dart 官方文档](https://dart.dev/guides)
 - [Flutter GitHub](https://github.com/flutter/flutter)
+- [知识库 GitHub](https://github.com/liudonjun/Flutter-Knowledge-Base)
