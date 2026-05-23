@@ -31,19 +31,19 @@ features:
 ## 🎯 快速开始
 
 ### 初学者路径
-1. [[guide/introduction]] - Flutter 简介 - 了解 Flutter 框架
-2. [[guide/setup]] - 环境搭建 - 配置开发环境
-3. [[guide/first-app]] - 第一个应用 - 创建 Hello World
+1. [[Flutter 简介]] - Flutter 简介 - 了解 Flutter 框架
+2. [[环境搭建]] - 环境搭建 - 配置开发环境
+3. [[第一个应用]] - 第一个应用 - 创建 Hello World
 
 ### 进阶路径
-1. [[guide/widgets]] - Widget 系统 - 掌握 Widget 核心
-2. [[guide/state-management]] - 状态管理 - 学习状态管理方案
-3. [[guide/navigation]] - 导航与路由 - 实现页面导航
+1. [[Widget 系统]] - Widget 系统 - 掌握 Widget 核心
+2. [[状态管理]] - 状态管理 - 学习状态管理方案
+3. [[导航与路由]] - 导航与路由 - 实现页面导航
 
 ### 高级路径
-1. [[core/architecture]] - 架构概览 - 深入理解架构
-2. [[projects/ecommerce]] - 电商应用 - 完整项目实战
-3. [[resources/official]] - 官方资源 - 精选学习资源
+1. [[架构概览]] - 架构概览 - 深入理解架构
+2. [[电商应用]] - 电商应用 - 完整项目实战
+3. [[官方资源]] - 官方资源 - 精选学习资源
 
 ## 📊 知识库概览
 

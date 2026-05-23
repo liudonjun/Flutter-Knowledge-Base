@@ -646,10 +646,10 @@ class PerformanceOptimization {
 
 ## 🔗 相关链接
 
-- [[guide/widgets]] - Widget 系统
-- [[guide/state-management]] - 状态管理
-- [[guide/navigation]] - 导航与路由
-- [[core/architecture]] - Flutter 架构
+- [[Widget 系统]] - Widget 系统
+- [[状态管理]] - 状态管理
+- [[导航与路由]] - 导航与路由
+- [[架构概览]] - Flutter 架构
 
 ---
 *最后更新: 2026年5月23日*

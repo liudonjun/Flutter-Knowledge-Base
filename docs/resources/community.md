@@ -99,23 +99,23 @@
 ## 🔗 相关链接
 
 ### 核心概念
-- [[core/architecture]] - Flutter 架构概览
-- [[core/widgets]] - 一切皆 Widget
-- [[core/dart]] - Dart 语言
+- [[架构概览]] - Flutter 架构概览
+- [[一切皆 Widget]] - 一切皆 Widget
+- [[Dart 语言]] - Dart 语言
 
 ### 指南
-- [[guide/widgets]] - Widget 系统详解
-- [[guide/state-management]] - 状态管理方案
-- [[guide/navigation]] - 导航与路由系统
+- [[Widget 系统]] - Widget 系统详解
+- [[状态管理]] - 状态管理方案
+- [[导航与路由]] - 导航与路由系统
 
 ### 实战项目
-- [[projects/ecommerce]] - 电商应用实战
-- [[projects/social]] - 社交应用开发
+- [[电商应用]] - 电商应用实战
+- [[社交应用]] - 社交应用开发
 
 ### 学习资源
-- [[resources/official]] - 官方资源
-- [[resources/books]] - 书籍推荐
-- [[resources/index]] - 学习资源索引
+- [[官方资源]] - 官方资源
+- [[书籍推荐]] - 书籍推荐
+- [[学习资源]] - 学习资源索引
 
 ---
 *最后更新: 2026年5月23日*

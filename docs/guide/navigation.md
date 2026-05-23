@@ -442,10 +442,10 @@ class RouterDelegate extends RouterDelegate<RouteInformation>
 
 ## 🔗 相关链接
 
-- [[guide/widgets]] - Widget 系统
-- [[guide/state-management]] - 状态管理
-- [[core/architecture]] - Flutter 架构
-- [[projects/ecommerce]] - 实战项目
+- [[Widget 系统]] - Widget 系统
+- [[状态管理]] - 状态管理
+- [[架构概览]] - Flutter 架构
+- [[电商应用]] - 实战项目
 
 ---
 *最后更新: 2026年5月23日*

@@ -37,44 +37,44 @@ npm run dev
 ## 📖 学习路径
 
 ### 初学者路径
-1. [[guide/introduction]] - Flutter 简介
-2. [[guide/setup]] - 环境搭建
-3. [[guide/first-app]] - 第一个应用
-4. [[guide/widgets]] - Widget 系统
+1. [[Flutter 简介]] - Flutter 简介
+2. [[环境搭建]] - 环境搭建
+3. [[第一个应用]] - 第一个应用
+4. [[Widget 系统]] - Widget 系统
 
 ### 进阶路径
-1. [[guide/state-management]] - 状态管理
-2. [[guide/navigation]] - 导航与路由
-3. [[guide/networking]] - 网络与数据
-4. [[guide/ui-design]] - UI 设计与动画
+1. [[状态管理]] - 状态管理
+2. [[导航与路由]] - 导航与路由
+3. [[网络与数据]] - 网络与数据
+4. [[UI 设计与动画]] - UI 设计与动画
 
 ### 高级路径
-1. [[core/architecture]] - 架构概览
-2. [[guide/performance]] - 性能优化
-3. [[guide/testing]] - 测试与调试
-4. [[projects/ecommerce]] - 实战项目
+1. [[架构概览]] - 架构概览
+2. [[性能优化]] - 性能优化
+3. [[测试与调试]] - 测试与调试
+4. [[电商应用]] - 实战项目
 
 ## 🎯 核心内容
 
 ### 基础概念
-- [[core/architecture]] - Flutter 三层架构
-- [[core/widgets]] - 一切皆 Widget
-- [[core/dart]] - Dart 语言基础
+- [[架构概览]] - Flutter 三层架构
+- [[一切皆 Widget]] - 一切皆 Widget
+- [[Dart 语言]] - Dart 语言基础
 
 ### 开发指南
-- [[guide/widgets]] - Widget 系统详解
-- [[guide/state-management]] - 状态管理方案
-- [[guide/navigation]] - 导航与路由系统
-- [[guide/networking]] - 网络请求与数据处理
+- [[Widget 系统]] - Widget 系统详解
+- [[状态管理]] - 状态管理方案
+- [[导航与路由]] - 导航与路由系统
+- [[网络与数据]] - 网络请求与数据处理
 
 ### 实战项目
-- [[projects/ecommerce]] - 电商应用开发
-- [[projects/index]] - 项目实战指南
+- [[电商应用]] - 电商应用开发
+- [[项目实战]] - 项目实战指南
 
 ### 学习资源
-- [[resources/official]] - 官方资源
-- [[resources/community]] - 社区资源
-- [[resources/books]] - 书籍推荐
+- [[官方资源]] - 官方资源
+- [[社区资源]] - 社区资源
+- [[书籍推荐]] - 书籍推荐
 
 ## 🔧 技术栈
 

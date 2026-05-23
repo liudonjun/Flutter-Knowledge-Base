@@ -347,10 +347,10 @@ class MyWidget extends StatelessWidget {
 
 ## 🔗 相关链接
 
-- [[core/architecture]] - Flutter 架构概览
-- [[core/widgets]] - 一切皆 Widget
-- [[guide/state-management]] - 状态管理
-- [[guide/navigation]] - 导航与路由
+- [[架构概览]] - Flutter 架构概览
+- [[一切皆 Widget]] - 一切皆 Widget
+- [[状态管理]] - 状态管理
+- [[导航与路由]] - 导航与路由
 
 ---
 *最后更新: 2026年5月23日*
