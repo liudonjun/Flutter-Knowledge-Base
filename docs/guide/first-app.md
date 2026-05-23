@@ -187,34 +187,34 @@ flutter run -d emulator-5554
 ## 🔗 相关链接
 
 ### 入门指南
-- [[Flutter 简介]] - Flutter 简介
-- [[环境搭建]] - 环境搭建
-- [[第一个应用]] - 第一个应用
+- [Flutter 简介](/guide/introduction) - Flutter 简介
+- [环境搭建](/guide/setup) - 环境搭建
+- [第一个应用](/guide/first-app) - 第一个应用
 
 ### 核心概念
-- [[架构概览]] - Flutter 架构概览
-- [[一切皆 Widget]] - 一切皆 Widget
-- [[Dart 语言]] - Dart 语言
+- [架构概览](/core/architecture) - Flutter 架构概览
+- [一切皆 Widget](/core/widgets) - 一切皆 Widget
+- [Dart 语言](/core/dart) - Dart 语言
 
 ### 指南
-- [[Widget 系统]] - Widget 系统详解
-- [[状态管理]] - 状态管理方案
-- [[导航与路由]] - 导航与路由系统
+- [Widget 系统](/guide/widgets) - Widget 系统详解
+- [状态管理](/guide/state-management) - 状态管理方案
+- [导航与路由](/guide/navigation) - 导航与路由系统
 
 ### 实战项目
-- [[电商应用]] - 电商应用实战
-- [[社交应用]] - 社交应用开发
+- [电商应用](/projects/ecommerce) - 电商应用实战
+- [社交应用](/projects/social) - 社交应用开发
 
 ### 学习资源
-- [[官方资源]] - 官方资源
-- [[社区资源]] - 社区资源
-- [[书籍推荐]] - 书籍推荐
+- [官方资源](/resources/official) - 官方资源
+- [社区资源](/resources/community) - 社区资源
+- [书籍推荐](/resources/books) - 书籍推荐
 
 ## 📚 下一步
 
-- [[Widget 系统]] - Widget 系统
-- [[状态管理]] - 状态管理
-- [[导航与路由]] - 导航与路由
+- [Widget 系统](/guide/widgets) - Widget 系统
+- [状态管理](/guide/state-management) - 状态管理
+- [导航与路由](/guide/navigation) - 导航与路由
 
 ---
 *最后更新: 2026年5月23日*

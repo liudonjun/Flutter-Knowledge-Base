@@ -423,10 +423,10 @@ debugPrint('状态更新: $state');
 
 ## 🔗 相关链接
 
-- [[Widget 系统]] - Widget 系统
-- [[导航与路由]] - 导航与路由
-- [[架构概览]] - Flutter 架构
-- [[电商应用]] - 实战项目
+- [Widget 系统](/guide/widgets) - Widget 系统
+- [导航与路由](/guide/navigation) - 导航与路由
+- [架构概览](/core/architecture) - Flutter 架构
+- [电商应用](/projects/ecommerce) - 实战项目
 
 ---
 *最后更新: 2026年5月23日*

@@ -43,19 +43,19 @@
 ## 🚀 学习路径
 
 ### 1. 入门项目
-- [[projects/todo]] - Todo 应用
-- [[projects/weather]] - 天气应用
-- [[projects/calculator]] - 计算器
+- [projects/todo](/projects/todo) - Todo 应用
+- [projects/weather](/projects/weather) - 天气应用
+- [projects/calculator](/projects/calculator) - 计算器
 
 ### 2. 进阶项目
-- [[电商应用]] - 电商应用
-- [[社交应用]] - 社交应用
-- [[projects/music]] - 音乐播放器
+- [电商应用](/projects/ecommerce) - 电商应用
+- [社交应用](/projects/social) - 社交应用
+- [projects/music](/projects/music) - 音乐播放器
 
 ### 3. 高级项目
-- [[projects/ecommerce-system]] - 完整电商系统
-- [[projects/enterprise]] - 企业级应用
-- [[projects/open-source]] - 开源项目
+- [projects/ecommerce-system](/projects/ecommerce-system) - 完整电商系统
+- [projects/enterprise](/projects/enterprise) - 企业级应用
+- [projects/open-source](/projects/open-source) - 开源项目
 
 ## 📚 学习资源
 
@@ -66,23 +66,23 @@
 ## 🔗 相关链接
 
 ### 核心概念
-- [[架构概览]] - Flutter 架构概览
-- [[一切皆 Widget]] - 一切皆 Widget
-- [[Dart 语言]] - Dart 语言
+- [架构概览](/core/architecture) - Flutter 架构概览
+- [一切皆 Widget](/core/widgets) - 一切皆 Widget
+- [Dart 语言](/core/dart) - Dart 语言
 
 ### 指南
-- [[Widget 系统]] - Widget 系统详解
-- [[状态管理]] - 状态管理方案
-- [[导航与路由]] - 导航与路由系统
+- [Widget 系统](/guide/widgets) - Widget 系统详解
+- [状态管理](/guide/state-management) - 状态管理方案
+- [导航与路由](/guide/navigation) - 导航与路由系统
 
 ### 实战项目
-- [[电商应用]] - 电商应用实战
-- [[社交应用]] - 社交应用开发
+- [电商应用](/projects/ecommerce) - 电商应用实战
+- [社交应用](/projects/social) - 社交应用开发
 
 ### 学习资源
-- [[官方资源]] - 官方资源
-- [[社区资源]] - 社区资源
-- [[书籍推荐]] - 书籍推荐
+- [官方资源](/resources/official) - 官方资源
+- [社区资源](/resources/community) - 社区资源
+- [书籍推荐](/resources/books) - 书籍推荐
 
 ---
 *最后更新: 2026年5月23日*

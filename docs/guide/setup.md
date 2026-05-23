@@ -104,24 +104,24 @@ sudo xcodebuild -runFirstLaunch
 ## 🔗 相关链接
 
 ### 入门指南
-- [[Flutter 简介]] - Flutter 简介
-- [[第一个应用]] - 第一个应用
-- [[Widget 系统]] - Widget 系统
+- [Flutter 简介](/guide/introduction) - Flutter 简介
+- [第一个应用](/guide/first-app) - 第一个应用
+- [Widget 系统](/guide/widgets) - Widget 系统
 
 ### 核心概念
-- [[架构概览]] - Flutter 架构概览
-- [[Dart 语言]] - Dart 语言基础
-- [[一切皆 Widget]] - 一切皆 Widget
+- [架构概览](/core/architecture) - Flutter 架构概览
+- [Dart 语言](/core/dart) - Dart 语言基础
+- [一切皆 Widget](/core/widgets) - 一切皆 Widget
 
 ### 学习资源
-- [[官方资源]] - 官方资源
-- [[社区资源]] - 社区资源
+- [官方资源](/resources/official) - 官方资源
+- [社区资源](/resources/community) - 社区资源
 
 ## 📚 下一步
 
-- [[第一个应用]] - 创建第一个应用
-- [[Widget 系统]] - 学习 Widget 系统
-- [[状态管理]] - 状态管理方案
+- [第一个应用](/guide/first-app) - 创建第一个应用
+- [Widget 系统](/guide/widgets) - 学习 Widget 系统
+- [状态管理](/guide/state-management) - 状态管理方案
 
 ---
 *最后更新: 2026年5月23日*
