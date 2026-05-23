@@ -43,19 +43,19 @@
 ## 🚀 学习路径
 
 ### 1. 入门项目
-- [projects/todo](/projects/todo) - Todo 应用
-- [projects/weather](/projects/weather) - 天气应用
-- [projects/calculator](/projects/calculator) - 计算器
+- **Todo 应用** — 任务列表与本地持久化（文档筹备中，可先对照 [指南：第一个应用](/guide/first-app) 自行练习）
+- **天气应用** — 网络请求与数据展示（文档筹备中）
+- **计算器** — 布局与事件处理（文档筹备中）
 
 ### 2. 进阶项目
 - [电商应用](/projects/ecommerce) - 电商应用
 - [社交应用](/projects/social) - 社交应用
-- [projects/music](/projects/music) - 音乐播放器
+- **音乐播放器** — 音频与后台任务（文档筹备中）
 
 ### 3. 高级项目
-- [projects/ecommerce-system](/projects/ecommerce-system) - 完整电商系统
-- [projects/enterprise](/projects/enterprise) - 企业级应用
-- [projects/open-source](/projects/open-source) - 开源项目
+- **完整电商系统** — 账号、支付、订单全链路（文档筹备中）
+- **企业级应用** — 工程化与团队协作（文档筹备中）
+- **开源项目** — 阅读源码与贡献流程（文档筹备中）
 
 ## 📚 学习资源
 
