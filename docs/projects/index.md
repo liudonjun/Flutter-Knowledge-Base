@@ -43,19 +43,19 @@
 ## 🚀 学习路径
 
 ### 1. 入门项目
-- [Todo 应用](/projects/todo)
-- [天气应用](/projects/weather)
-- [计算器](/projects/calculator)
+- [[projects/todo]] - Todo 应用
+- [[projects/weather]] - 天气应用
+- [[projects/calculator]] - 计算器
 
 ### 2. 进阶项目
-- [电商应用](/projects/ecommerce)
-- [社交应用](/projects/social)
-- [音乐播放器](/projects/music)
+- [[projects/ecommerce]] - 电商应用
+- [[projects/social]] - 社交应用
+- [[projects/music]] - 音乐播放器
 
 ### 3. 高级项目
-- [完整电商系统](/projects/ecommerce-system)
-- [企业级应用](/projects/enterprise)
-- [开源项目](/projects/open-source)
+- [[projects/ecommerce-system]] - 完整电商系统
+- [[projects/enterprise]] - 企业级应用
+- [[projects/open-source]] - 开源项目
 
 ## 📚 学习资源
 
@@ -65,6 +65,24 @@
 
 ## 🔗 相关链接
 
-- [入门指南](/guide/)
-- [核心概念](/core/)
-- [学习资源](/resources/)
+### 核心概念
+- [[core/architecture]] - Flutter 架构概览
+- [[core/widgets]] - 一切皆 Widget
+- [[core/dart]] - Dart 语言
+
+### 指南
+- [[guide/widgets]] - Widget 系统详解
+- [[guide/state-management]] - 状态管理方案
+- [[guide/navigation]] - 导航与路由系统
+
+### 实战项目
+- [[projects/ecommerce]] - 电商应用实战
+- [[projects/social]] - 社交应用开发
+
+### 学习资源
+- [[resources/official]] - 官方资源
+- [[resources/community]] - 社区资源
+- [[resources/books]] - 书籍推荐
+
+---
+*最后更新: 2026年5月23日*

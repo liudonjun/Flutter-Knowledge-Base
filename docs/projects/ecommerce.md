@@ -195,6 +195,25 @@ class DatabaseService {
 
 ## 🔗 相关链接
 
-- [项目实战指南](/projects/)
-- [社交应用](/projects/social)
-- [状态管理](/guide/state-management)
+### 核心概念
+- [[core/architecture]] - Flutter 架构概览
+- [[core/widgets]] - 一切皆 Widget
+- [[core/dart]] - Dart 语言
+
+### 指南
+- [[guide/widgets]] - Widget 系统详解
+- [[guide/state-management]] - 状态管理方案
+- [[guide/navigation]] - 导航与路由系统
+- [[guide/networking]] - 网络与数据处理
+
+### 实战项目
+- [[projects/index]] - 项目实战指南
+- [[projects/social]] - 社交应用开发
+
+### 学习资源
+- [[resources/official]] - 官方资源
+- [[resources/community]] - 社区资源
+- [[resources/books]] - 书籍推荐
+
+---
+*最后更新: 2026年5月23日*

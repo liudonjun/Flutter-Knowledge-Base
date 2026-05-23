@@ -111,6 +111,25 @@ const Text('Hello')  // 使用 const
 
 ## 🔗 相关链接
 
-- [架构概览](/core/architecture)
-- [Dart 语言](/core/dart)
-- [状态管理](/guide/state-management)
+### 核心概念
+- [[core/architecture]] - Flutter 架构概览
+- [[core/widgets]] - 一切皆 Widget
+- [[core/dart]] - Dart 语言
+
+### 指南
+- [[guide/widgets]] - Widget 系统详解
+- [[guide/state-management]] - 状态管理方案
+- [[guide/navigation]] - 导航与路由系统
+- [[guide/ui-design]] - UI 设计与动画
+
+### 实战项目
+- [[projects/ecommerce]] - 电商应用实战
+- [[projects/social]] - 社交应用开发
+
+### 学习资源
+- [[resources/official]] - 官方资源
+- [[resources/community]] - 社区资源
+- [[resources/books]] - 书籍推荐
+
+---
+*最后更新: 2026年5月23日*
