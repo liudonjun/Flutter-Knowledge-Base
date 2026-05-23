@@ -70,7 +70,7 @@ export default defineConfig({
     },
     
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/flutter/flutter' }
+      { icon: 'github', link: 'https://github.com/liudonjun/Flutter-Knowledge-Base' }
     ],
     
     footer: {

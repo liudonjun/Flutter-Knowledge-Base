@@ -32,6 +32,7 @@ npm run dev
 ### 在线访问
 
 - **GitHub Pages**: https://liudonjun.github.io/Flutter-Knowledge-Base/
+- **GitHub 仓库**: https://github.com/liudonjun/Flutter-Knowledge-Base
 - **Obsidian**: 直接打开 `docs/` 目录
 
 ## 📖 学习路径
