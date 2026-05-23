@@ -1,0 +1,22 @@
+{
+  "name": "flutter-knowledge-base",
+  "version": "1.0.0",
+  "description": "Flutter \u77e5\u8bc6\u5e93 - \u57fa\u4e8e VitePress \u7684\u9759\u6001\u7ad9\u70b9",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "keywords": [
+    "flutter",
+    "dart",
+    "vitepress",
+    "documentation"
+  ],
+  "author": "Hermes Agent",
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "^1.0.0"
+  }
+}

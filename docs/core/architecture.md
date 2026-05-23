@@ -1,0 +1,93 @@
+# Flutter 架构概览
+
+> Flutter 采用分层架构设计，从上到下分为三层。
+
+## 🏗️ 三层架构
+
+### 1. Framework 层 (Dart)
+- **功能**: 提供丰富的 Widget、动画、手势等高级 API
+- **语言**: Dart
+- **组件**: 
+  - 基础 Widget 类
+  - 渲染层
+  - Material Design 和 Cupertino 风格 Widget
+  - 手势识别
+  - 动画系统
+
+### 2. Engine 层 (C++)
+- **功能**: 核心渲染引擎，处理文本、布局、渲染管道
+- **技术**: C++
+- **组件**:
+  - Skia 渲染引擎
+  - Dart 运行时
+  - 文本布局
+  - 图形处理
+
+### 3. Embedder 层 (平台特定)
+- **功能**: 平台特定的嵌入器，处理窗口、输入、线程
+- **语言**: 平台特定 (Java/Kotlin, Objective-C/Swift, C++)
+- **职责**:
+  - 创建渲染表面
+  - 管理线程
+  - 处理平台消息
+  - 管理应用生命周期
+
+## 🔄 数据流
+
+```
+用户输入 → Framework → Engine → Embedder → 屏幕显示
+```
+
+## 🎯 核心优势
+
+### 1. 高性能
+- 直接编译为原生代码
+- 无桥接层开销
+- 60fps/120fps 流畅渲染
+
+### 2. 一致性
+- 自绘引擎，不依赖平台 UI
+- 跨平台 UI 一致
+- 像素级控制
+
+### 3. 开发效率
+- 热重载快速迭代
+- 丰富的 Widget 库
+- 声明式 UI 编程
+
+## 📊 与其他框架对比
+
+| 特性 | Flutter | React Native | 原生开发 |
+|------|---------|--------------|----------|
+| 渲染方式 | 自绘引擎 | 平台 UI | 平台 UI |
+| 性能 | 高 | 中 | 高 |
+| UI 一致性 | 高 | 中 | 低 |
+| 开发效率 | 高 | 中 | 低 |
+| 热重载 | 支持 | 支持 | 不支持 |
+
+## 🚀 学习建议
+
+1. **先理解**: 三层架构的基本概念
+2. **再深入**: 每层的具体实现
+3. **最后实践**: 通过项目加深理解
+
+## 🔗 相关链接
+
+### 核心概念
+- [[core/widgets]] - 一切皆 Widget
+- [[core/dart]] - Dart 语言
+- [[core/architecture]] - 架构概览
+
+### 指南
+- [[guide/widgets]] - Widget 系统详解
+- [[guide/state-management]] - 状态管理方案
+- [[guide/navigation]] - 导航与路由系统
+
+### 实战项目
+- [[projects/ecommerce]] - 电商应用实战
+- [[projects/social]] - 社交应用开发
+
+### 学习资源
+- [[resources/official]] - 官方资源
+- [[resources/community]] - 社区资源
+- [[resources/books]] - 书籍推荐
