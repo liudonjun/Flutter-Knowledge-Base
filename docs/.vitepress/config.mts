@@ -33,7 +33,8 @@ export default defineConfig({
             { text: '网络与数据', link: '/guide/networking' },
             { text: 'UI 设计与动画', link: '/guide/ui-design' },
             { text: '性能优化', link: '/guide/performance' },
-            { text: '测试与调试', link: '/guide/testing' }
+            { text: '测试与调试', link: '/guide/testing' },
+            { text: '平台集成', link: '/guide/platform-integration' }
           ]
         }
       ],
@@ -43,7 +44,8 @@ export default defineConfig({
           items: [
             { text: '架构概览', link: '/core/architecture' },
             { text: '一切皆 Widget', link: '/core/widgets' },
-            { text: 'Dart 语言', link: '/core/dart' }
+            { text: 'Dart 语言', link: '/core/dart' },
+            { text: '架构模式', link: '/core/architecture-patterns' }
           ]
         }
       ],
@@ -63,7 +65,9 @@ export default defineConfig({
           items: [
             { text: '官方资源', link: '/resources/official' },
             { text: '社区资源', link: '/resources/community' },
-            { text: '书籍推荐', link: '/resources/books' }
+            { text: '书籍推荐', link: '/resources/books' },
+            { text: '第三方库推荐', link: '/resources/third-party-libraries' },
+            { text: '面试准备', link: '/resources/interview-preparation' }
           ]
         }
       ]

@@ -1,0 +1,16 @@
+# Netlify 部署配置 — Flutter 知识库（VitePress）
+# 文档：https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  command = "npm run build"
+  publish = "docs/.vitepress/dist"
+
+[build.environment]
+  # 与 Netlify 当前 LTS 对齐；可按需在 Netlify UI 或此处调整
+  NODE_VERSION = "20"
+
+# 静态资源长期缓存（VitePress 构建产物带内容哈希）
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
