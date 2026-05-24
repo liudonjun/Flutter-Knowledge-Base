@@ -22,6 +22,7 @@
 - [[Dart进阶特性]] - Dart 进阶特性详解
 - [[Dart函数式编程]] - Dart 函数式编程详解
 - [[Dart元编程]] - Dart 元编程详解
+- [[并发控制与Isolate]] - 并发控制与 Isolate 详解
 - [[泛型]] - 泛型编程
 - [[异步编程]] - Future 和 async/await
 - [[错误处理]] - 异常处理
