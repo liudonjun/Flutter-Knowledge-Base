@@ -33,7 +33,7 @@ npm run dev
 
 - **GitHub Pages**: https://liudonjun.github.io/Flutter-Knowledge-Base/
 - **GitHub 仓库**: https://github.com/liudonjun/Flutter-Knowledge-Base
-- **Obsidian**: 直接打开 `docs/` 目录
+- **Obsidian**：打开仓库根目录；长文与笔记均在 `docs/` 下（如 `docs/01-核心概念/`、`docs/笔记/`）
 
 ## 📖 学习路径
 

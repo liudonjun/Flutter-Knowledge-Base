@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
-    "preview": "vitepress preview docs"
+    "preview": "vitepress preview docs",
+    "audit:wiki-links": "node scripts/audit-wiki-links.mjs"
   },
   "keywords": [
     "flutter",

@@ -1,19 +1,114 @@
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import type MarkdownIt from 'markdown-it'
 import { defineConfig } from 'vitepress'
+import type { DefaultTheme } from 'vitepress'
+import { createWikiHrefResolver } from './lib/wikiHrefIndex'
+import { markdownWikiLinksPlugin } from './lib/markdownWikiLinks'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+/** VitePress 文档根：`docs/` */
+const docsRoot = path.resolve(__dirname, '..')
+
+const wikiResolveHref = createWikiHrefResolver(docsRoot)
+
+/** 完整知识库模块目录（位于 docs/ 下，与 Obsidian 编辑路径一致） */
+const HANDBOOK_DIRS = [
+  '01-核心概念',
+  '02-开发环境',
+  '03-Dart语言',
+  '04-Widget系统',
+  '05-状态管理',
+  '06-导航与路由',
+  '07-网络与数据',
+  '08-UI与动画',
+  '09-平台集成',
+  '10-测试与调试',
+  '11-性能优化',
+  '12-项目实战',
+  '13-第三方库',
+  '14-面试与进阶'
+] as const
+
+function handbookModuleTitle(dirName: string): string {
+  return dirName.replace(/^\d+-/, '')
+}
+
+function mdStem(name: string): string {
+  return name.replace(/\.md$/, '')
+}
+
+function handbookLandingLink(dirName: string): string {
+  const dir = path.join(docsRoot, dirName)
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.md'))
+  const indexed = files.filter((f) => f.startsWith('00-')).sort()[0]
+  const fallback = [...files].sort()[0]
+  const pick = indexed ?? fallback
+  if (!pick) return `/handbook/`
+  return `/${dirName}/${mdStem(pick)}`
+}
+
+/** 当前路径处于某知识库前缀下时在侧栏列出该文件夹内全部 Markdown */
+function buildHandbookSectionSidebars(): DefaultTheme.Config['sidebar'] {
+  const out: Record<string, DefaultTheme.SidebarItem[]> = {}
+  for (const dirName of HANDBOOK_DIRS) {
+    const dir = path.join(docsRoot, dirName)
+    if (!fs.existsSync(dir)) continue
+    const files = fs
+      .readdirSync(dir)
+      .filter((f) => f.endsWith('.md'))
+      .sort((a, b) => a.localeCompare(b, 'zh-Hans-CN', { numeric: true }))
+    const title = handbookModuleTitle(dirName)
+    const prefix = `/${dirName}/`
+    out[prefix] = [
+      {
+        text: title,
+        items: files.map((f) => ({
+          text: mdStem(f).replace(/^\d+-/, ''),
+          link: `${prefix}${mdStem(f)}`
+        }))
+      },
+      {
+        text: '知识库导读',
+        link: '/handbook/'
+      }
+    ]
+  }
+  return out
+}
+
+function handbookNavItems(): DefaultTheme.SidebarItem[] {
+  return HANDBOOK_DIRS.map((dirName) => ({
+    text: handbookModuleTitle(dirName),
+    link: handbookLandingLink(dirName)
+  }))
+}
 
 export default defineConfig({
   title: 'Flutter 知识库',
   description: '系统化的 Flutter 开发学习资源',
   lang: 'zh-CN',
-  
+
+  markdown: {
+    config(md: MarkdownIt) {
+      md.use(markdownWikiLinksPlugin, { resolveHref: wikiResolveHref })
+    }
+  },
+
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
       { text: '指南', link: '/guide/' },
       { text: '核心概念', link: '/core/' },
+      {
+        text: '完整知识库',
+        items: handbookNavItems()
+      },
       { text: '实战项目', link: '/projects/' },
       { text: '学习资源', link: '/resources/' }
     ],
-    
+
     sidebar: {
       '/guide/': [
         {
@@ -36,6 +131,10 @@ export default defineConfig({
             { text: '测试与调试', link: '/guide/testing' },
             { text: '平台集成', link: '/guide/platform-integration' }
           ]
+        },
+        {
+          text: '知识库原文',
+          link: '/handbook/'
         }
       ],
       '/core/': [
@@ -47,7 +146,8 @@ export default defineConfig({
             { text: 'Dart 语言', link: '/core/dart' },
             { text: '架构模式', link: '/core/architecture-patterns' }
           ]
-        }
+        },
+        { text: '知识库详解（长文）', link: '/handbook/' }
       ],
       '/projects/': [
         {
@@ -57,7 +157,8 @@ export default defineConfig({
             { text: '电商应用', link: '/projects/ecommerce' },
             { text: '社交应用', link: '/projects/social' }
           ]
-        }
+        },
+        { text: '知识库：项目实战', link: handbookLandingLink('12-项目实战') }
       ],
       '/resources/': [
         {
@@ -69,19 +170,50 @@ export default defineConfig({
             { text: '第三方库推荐', link: '/resources/third-party-libraries' },
             { text: '面试准备', link: '/resources/interview-preparation' }
           ]
+        },
+        { text: '知识库导读', link: '/handbook/' }
+      ],
+      '/handbook/': [
+        { text: '总览', link: '/handbook/' },
+        { text: '维基链接待处理清单', link: '/handbook/wiki-link-backlog' },
+        {
+          text: '笔记与辅助',
+          items: [
+            { text: '学习笔记', link: '/笔记/学习笔记' },
+            { text: '笔记模板', link: '/模板/笔记模板' },
+            { text: '学习资源汇总', link: '/资源/学习资源' }
+          ]
+        },
+        {
+          text: '按模块浏览',
+          items: handbookNavItems()
         }
-      ]
+      ],
+      '/笔记/': [
+        { text: '学习笔记', link: '/笔记/学习笔记' },
+        { text: '知识库导读', link: '/handbook/' }
+      ],
+      '/模板/': [
+        { text: '笔记模板', link: '/模板/笔记模板' },
+        { text: '知识库导读', link: '/handbook/' }
+      ],
+      '/资源/': [
+        { text: '学习资源汇总', link: '/资源/学习资源' },
+        { text: '站内精选资源', link: '/resources/' },
+        { text: '知识库导读', link: '/handbook/' }
+      ],
+      ...buildHandbookSectionSidebars()
     },
-    
+
     socialLinks: [
       { icon: 'github', link: 'https://github.com/liudonjun/Flutter-Knowledge-Base' }
     ],
-    
+
     footer: {
       message: '基于 VitePress 构建',
       copyright: 'Copyright © 2026 Flutter 知识库'
     },
-    
+
     search: {
       provider: 'local'
     }
