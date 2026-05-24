@@ -39,7 +39,43 @@ export const WIKI_SYNONYMS: Record<string, string> = {
   '网络问题': '02-开发环境/30-常见问题解决方案',
 
   // ============================================
-  // 核心概念
+  // Widget 系统
+  // ============================================
+  'Container': '04-Widget系统/01-Container详解',
+  'Text': '04-Widget系统/02-Text详解',
+  'Row': '04-Widget系统/03-Row和Column详解',
+  'Column': '04-Widget系统/03-Row和Column详解',
+  'Stack': '04-Widget系统/04-Stack和Positioned详解',
+  'Positioned': '04-Widget系统/04-Stack和Positioned详解',
+  'ListView': '04-Widget系统/10-ListView详解',
+  'GridView': '04-Widget系统/11-GridView详解',
+  'Scaffold': '04-Widget系统/20-Scaffold详解',
+  'AppBar': '04-Widget系统/20-Scaffold详解',
+  'Button': '04-Widget系统/30-Button详解',
+  'ElevatedButton': '04-Widget系统/30-Button详解',
+  'TextButton': '04-Widget系统/30-Button详解',
+  'IconButton': '04-Widget系统/30-Button详解',
+  'FloatingActionButton': '04-Widget系统/30-Button详解',
+  'TextField': '04-Widget系统/40-TextField详解',
+  'Image': '04-Widget系统/50-Image详解',
+  'Card': '04-Widget系统/60-Card和ListTile详解',
+  'ListTile': '04-Widget系统/60-Card和ListTile详解',
+  'Dialog': '04-Widget系统/70-Dialog和BottomSheet详解',
+  'BottomSheet': '04-Widget系统/70-Dialog和BottomSheet详解',
+  'AlertDialog': '04-Widget系统/70-Dialog和BottomSheet详解',
+  'SnackBar': '04-Widget系统/80-SnackBar和Toast详解',
+  'Toast': '04-Widget系统/80-SnackBar和Toast详解',
+  'Widget基础详解': '04-Widget系统/01-Widget基础详解',
+  '布局系统详解': '04-Widget系统/02-布局系统详解',
+  '常用Widget详解': '04-Widget系统/03-常用Widget详解',
+  '高级Widget详解': '04-Widget系统/04-高级Widget详解',
+  'Widget生命周期详解': '04-Widget系统/05-Widget生命周期详解',
+  'Widget性能优化': '04-Widget系统/06-Widget性能优化',
+  '自定义Widget详解': '04-Widget系统/07-自定义Widget详解',
+  'Widget测试': '04-Widget系统/08-Widget测试',
+
+  // ============================================
+  // 状态管理
   // ============================================
   '声明式UI': '01-核心概念/06-声明式UI与Widget设计原则',
   '声明式UI与Widget设计原则': '01-核心概念/06-声明式UI与Widget设计原则',
