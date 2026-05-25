@@ -7,6 +7,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createWikiHrefResolver, normWikiTitle } from '../docs/.vitepress/lib/wikiHrefIndex.ts'
+import { pageHrefFromRelativePath } from '../docs/.vitepress/lib/markdownWikiLinks.ts'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const repoRoot = path.resolve(__dirname, '..')
@@ -68,11 +69,26 @@ function suggestCandidates(target) {
 
 const wikiRe = /\[\[([^\]]+)\]\]/g
 const unresolved = new Map()
+const selfLoops = new Map()
 let totalWiki = 0
 let resolvedWiki = 0
 
 /** 不参与统计（自动生成或含占位符示例） */
-const SKIP_AUDIT_FILES = new Set(['handbook/wiki-link-backlog.md'])
+const SKIP_AUDIT_FILES = new Set([
+  'handbook/wiki-link-backlog.md',
+  'handbook/13-14-supplement-plan.md',
+  '模板/笔记模板.md'
+])
+
+/** 模板 / 示例占位符，不计入 backlog */
+const PLACEHOLDER_TITLES = new Set([
+  '标题',
+  '双括号',
+  '相关问题1',
+  '相关问题2',
+  '相关知识点1',
+  '相关知识点2'
+])
 
 for (const rel of listMarkdownFiles(docsRoot)) {
   if (SKIP_AUDIT_FILES.has(rel)) continue
@@ -87,6 +103,16 @@ for (const rel of listMarkdownFiles(docsRoot)) {
     const targetWoHash = hashIdx >= 0 ? targetSide.slice(0, hashIdx).trim() : targetSide
 
     if (resolveHref(targetWoHash)) {
+      resolvedWiki++
+      const pageHref = pageHrefFromRelativePath(rel)
+      const resolved = resolveHref(targetWoHash)
+      if (pageHref && resolved?.split('#')[0] === pageHref.split('#')[0]) {
+        if (!selfLoops.has(targetWoHash)) selfLoops.set(targetWoHash, { count: 0, refs: new Set() })
+        const s = selfLoops.get(targetWoHash)
+        s.count++
+        s.refs.add(rel)
+      }
+    } else if (PLACEHOLDER_TITLES.has(targetWoHash)) {
       resolvedWiki++
     } else {
       if (!unresolved.has(targetWoHash)) unresolved.set(targetWoHash, { count: 0, refs: new Set() })
@@ -111,6 +137,7 @@ const lines = [
   `- **维基链接总数**：${totalWiki}`,
   `- **已解析**：${resolvedWiki}（${((resolvedWiki / totalWiki) * 100).toFixed(1)}%）`,
   `- **待处理（唯一标题）**：${sorted.length}`,
+  `- **自环链接（渲染为纯文本）**：${selfLoops.size} 种标题，共 ${[...selfLoops.values()].reduce((n, v) => n + v.count, 0)} 处`,
   '',
   '## 处理建议',
   '',
@@ -134,6 +161,30 @@ for (const [title, info] of sorted) {
 
 lines.push('', '---', `*共 ${sorted.length} 条待处理维基标题*`)
 
+if (selfLoops.size > 0) {
+  lines.push(
+    '',
+    '## 自环链接（构建时已降级为纯文本）',
+    '',
+    '> 下列 `[[标题]]` 解析目标与当前页相同；插件不会生成可点击链接。',
+    '',
+    '| 维基标题 | 出现次数 | 引用示例 |',
+    '| --- | ---: | --- |'
+  )
+  const loopSorted = [...selfLoops.entries()].sort(
+    (a, b) => b[1].count - a[1].count || a[0].localeCompare(b[0], 'zh-Hans-CN')
+  )
+  for (const [title, info] of loopSorted.slice(0, 40)) {
+    const refs = [...info.refs].sort().slice(0, 2).join('；')
+    lines.push(`| ${title.replace(/\|/g, '\\|')} | ${info.count} | ${refs} |`)
+  }
+  if (loopSorted.length > 40) {
+    lines.push('', `*… 共 ${loopSorted.length} 种自环标题*`)
+  }
+}
+
 fs.writeFileSync(outFile, lines.join('\n'), 'utf8')
 console.log(`Wrote ${outFile}`)
-console.log(`Resolved ${resolvedWiki}/${totalWiki}, backlog ${sorted.length} unique titles`)
+console.log(
+  `Resolved ${resolvedWiki}/${totalWiki}, backlog ${sorted.length} unique titles, self-loops ${selfLoops.size} titles`
+)

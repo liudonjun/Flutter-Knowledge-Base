@@ -1,13 +1,17 @@
 {
   "name": "flutter-knowledge-base",
   "version": "1.0.0",
-  "description": "Flutter \u77e5\u8bc6\u5e93 - \u57fa\u4e8e VitePress \u7684\u9759\u6001\u7ad9\u70b9",
+  "description": "Flutter 知识库 - 基于 VitePress 的静态站点",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
-    "audit:wiki-links": "node scripts/audit-wiki-links.mjs"
+    "audit:wiki-links": "node scripts/audit-wiki-links.mjs",
+    "generate:supplement-plan": "node scripts/generate-supplement-plan.mjs",
+    "generate:stub-pages": "node scripts/generate-stub-pages.mjs",
+    "normalize:index-links": "node scripts/normalize-index-wiki-links.mjs"
   },
   "keywords": [
     "flutter",

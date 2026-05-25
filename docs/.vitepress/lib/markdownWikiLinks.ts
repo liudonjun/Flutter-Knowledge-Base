@@ -10,8 +10,26 @@ function escapeMarkdownLabel(s: string): string {
     .replace(/\)/g, '\\)')
 }
 
+/** VitePress `state.env.relativePath` → 站内路径 */
+export function pageHrefFromRelativePath(relativePath?: string): string | undefined {
+  if (!relativePath) return undefined
+  const normalized = relativePath.replace(/\\/g, '/')
+  if (normalized === 'index.md') return '/'
+  if (normalized.endsWith('/index.md')) {
+    return `/${normalized.slice(0, -'/index.md'.length)}/`
+  }
+  if (normalized.endsWith('.md')) {
+    return `/${normalized.slice(0, -3)}`
+  }
+  return undefined
+}
+
 /** 将 `[[...]]`（不含代码围栏内）重写为 Markdown 链接或纯文本 */
-function rewriteWikiLinksInText(text: string, resolveHref: WikiHrefResolver): string {
+function rewriteWikiLinksInText(
+  text: string,
+  resolveHref: WikiHrefResolver,
+  currentPageHref?: string
+): string {
   return text.replace(/\[\[([^\]]+)\]\]/g, (whole, inner: string) => {
     const raw = inner.trim()
     const pipeIdx = raw.indexOf('|')
@@ -33,7 +51,12 @@ function rewriteWikiLinksInText(text: string, resolveHref: WikiHrefResolver): st
       return escapeMarkdownLabel(display)
     }
 
-    // 锚点按原文传递；站内标题 slug 可能与 Obsidian 不完全一致，但多数仍可用
+    const hrefBase = href.split('#')[0]
+    const pageBase = currentPageHref?.split('#')[0]
+    if (pageBase && hrefBase === pageBase) {
+      return escapeMarkdownLabel(display)
+    }
+
     return `[${escapeMarkdownLabel(display)}](${href}${anchor})`
   })
 }
@@ -62,8 +85,10 @@ function preserveCodeBlocks(markdown: string, rewriteMd: (s: string) => string):
 
 export function markdownWikiLinksPlugin(md: MarkdownIt, opts: { resolveHref: WikiHrefResolver }): void {
   md.core.ruler.before('normalize', 'flutter_kb_wiki_links', (state) => {
+    const env = state.env as { relativePath?: string }
+    const currentPageHref = pageHrefFromRelativePath(env.relativePath)
     state.src = preserveCodeBlocks(state.src, (chunk) =>
-      rewriteWikiLinksInText(chunk, opts.resolveHref)
+      rewriteWikiLinksInText(chunk, opts.resolveHref, currentPageHref)
     )
   })
 }

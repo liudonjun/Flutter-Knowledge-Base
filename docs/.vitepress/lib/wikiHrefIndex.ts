@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { PACKAGE_WIKI_SYNONYMS } from './wikiPackageSynonyms.ts'
 
 /** 对齐 Obsidian / VitePress：折叠空白，便于维基标题匹配文件名 */
 export function normWikiTitle(s: string): string {
@@ -39,6 +40,44 @@ function generateStemAliases(strippedStem: string): string[] {
   return [...aliases]
 }
 
+/** 同名文件冲突时强制指定 canonical 路径（去掉 .md 后的 VitePress 路由） */
+const DUPLICATE_CANONICAL: Readonly<Record<string, string>> = {
+  StatefulWidget详解: '/01-核心概念/00-StatefulWidget详解',
+  StatelessWidget详解: '/01-核心概念/00-StatelessWidget详解',
+  一切皆Widget详解: '/01-核心概念/00-一切皆Widget详解',
+  性能分析详解: '/01-核心概念/00-性能分析详解',
+  状态管理对比详解: '/05-状态管理/06-状态管理对比',
+  Flutter架构概览: '/01-核心概念/Flutter架构概览',
+  Stream详解: '/03-Dart语言/00-Stream详解',
+  CupertinoPageRoute详解: '/06-导航与路由/00-CupertinoPageRoute详解',
+  PageRouteBuilder详解: '/06-导航与路由/00-PageRouteBuilder详解',
+  GetX详解: '/05-状态管理/05-GetX详解',
+  Provider详解: '/05-状态管理/02-Provider详解',
+  Riverpod详解: '/05-状态管理/04-Riverpod详解',
+  BLoC详解: '/05-状态管理/03-Bloc模式详解',
+  GridView详解: '/04-Widget系统/11-GridView详解',
+  Widget基础详解: '/04-Widget系统/01-Widget基础详解',
+  TextField详解: '/04-Widget系统/40-TextField详解',
+  布局系统详解: '/04-Widget系统/02-布局系统详解',
+  常用Widget详解: '/04-Widget系统/03-常用Widget详解',
+  高级Widget详解: '/04-Widget系统/04-高级Widget详解',
+  Hero动画详解: '/08-UI与动画/00-Hero动画详解',
+  命名路由详解: '/06-导航与路由/03-命名路由详解',
+  底部导航详解: '/06-导航与路由/05-底部导航详解',
+  路由动画详解: '/06-导航与路由/07-路由动画详解',
+  路由守卫详解: '/06-导航与路由/03-路由守卫详解',
+  JSON解析详解: '/07-网络与数据/02-JSON解析详解',
+  动画系统详解: '/08-UI与动画/03-动画系统详解',
+  主题系统详解: '/08-UI与动画/02-主题系统详解',
+  手势处理详解: '/08-UI与动画/04-手势处理详解',
+  自定义绘制详解: '/08-UI与动画/05-自定义绘制详解',
+  Widget测试详解: '/10-测试与调试/02-Widget测试详解',
+  内存优化详解: '/11-性能优化/03-内存优化详解',
+  调试技巧详解: '/10-测试与调试/02-调试技巧详解',
+  单元测试详解: '/10-测试与调试/01-单元测试详解',
+  集成测试详解: '/10-测试与调试/03-集成测试详解'
+}
+
 /** 人工指定 + 索引/API 名 → 章节（无独立文章时链到最相关长文） */
 const WIKI_SYNONYMS_ENTRIES: ReadonlyArray<readonly [string, string]> = [
   // —— 站内导读短名 ——
@@ -56,8 +95,8 @@ const WIKI_SYNONYMS_ENTRIES: ReadonlyArray<readonly [string, string]> = [
   ['官方资源', '/resources/official'],
   ['社区资源', '/resources/community'],
   ['书籍推荐', '/resources/books'],
-  ['电商应用', '/projects/ecommerce'],
-  ['社交应用', '/projects/social'],
+  ['电商应用', '/12-项目实战/21-电商应用实战'],
+  ['社交应用', '/12-项目实战/22-社交应用实战'],
   ['UI 设计与动画', '/08-UI与动画/00-UI与动画索引'],
 
   // —— 核心概念索引 ——
@@ -161,7 +200,7 @@ const WIKI_SYNONYMS_ENTRIES: ReadonlyArray<readonly [string, string]> = [
   ['Isar', '/13-第三方库/04-数据库库详解'],
   ['SQLite', '/13-第三方库/04-数据库库详解'],
   ['第三方库推荐', '/13-第三方库/00-第三方库索引'],
-  ['第三方库源码', '/13-第三方库/01-常用第三方库'],
+  ['第三方库源码', '/13-第三方库/65-第三方库源码阅读'],
 
   // —— 测试 / 调试 / 性能 ——
   ['测试基础', '/10-测试与调试/01-测试基础'],
@@ -195,7 +234,40 @@ const WIKI_SYNONYMS_ENTRIES: ReadonlyArray<readonly [string, string]> = [
   ['笔记模板', '/模板/笔记模板'],
   ['学习资源', '/资源/学习资源'],
   ['Flutter知识库索引', '/handbook/'],
-  ['核心概念索引', '/01-核心概念/00-核心概念索引']
+  ['核心概念索引', '/01-核心概念/00-核心概念索引'],
+
+  // —— 重复文件名 / backlog 高频 ——
+  ['路由守卫详解', '/06-导航与路由/03-路由守卫详解'],
+  ['命名路由详解', '/06-导航与路由/03-命名路由详解'],
+  ['底部导航详解', '/06-导航与路由/05-底部导航详解'],
+  ['路由动画详解', '/06-导航与路由/07-路由动画详解'],
+  ['GridView详解', '/04-Widget系统/11-GridView详解'],
+  ['GridView', '/04-Widget系统/11-GridView详解'],
+  ['Widget基础详解', '/04-Widget系统/01-Widget基础详解'],
+  ['JSON解析详解', '/07-网络与数据/02-JSON解析详解'],
+  ['Widget测试', '/04-Widget系统/08-Widget测试'],
+  ['Widget测试详解', '/10-测试与调试/02-Widget测试详解'],
+  ['调试技巧', '/10-测试与调试/02-调试技巧详解'],
+  ['渲染优化', '/08-UI与动画/00-动画性能详解'],
+  ['Hero动画', '/08-UI与动画/00-Hero动画详解'],
+  ['Form', '/04-Widget系统/03-常用Widget详解'],
+  ['State', '/04-Widget系统/01-Widget基础详解'],
+  ['GetX详解', '/05-状态管理/05-GetX详解'],
+  ['Provider详解', '/05-状态管理/02-Provider详解'],
+  ['Riverpod详解', '/05-状态管理/04-Riverpod详解'],
+  ['CupertinoPageRoute详解', '/06-导航与路由/00-CupertinoPageRoute详解'],
+  ['PageRouteBuilder详解', '/06-导航与路由/00-PageRouteBuilder详解'],
+  ['StatefulWidget详解', '/01-核心概念/00-StatefulWidget详解'],
+  ['StatelessWidget详解', '/01-核心概念/00-StatelessWidget详解'],
+  ['NavigationRail', '/04-Widget系统/00-BottomNavigationBar详解'],
+  ['ValueNotifier', '/05-状态管理/01-状态管理基础'],
+  ['用户交互', '/08-UI与动画/04-手势处理详解'],
+  ['内存调试', '/11-性能优化/03-内存优化详解'],
+  ['数据模型', '/07-网络与数据/02-JSON解析详解'],
+  ['数据缓存', '/07-网络与数据/05-数据序列化与缓存策略'],
+  ['面试与进阶索引', '/14-面试与进阶/00-面试与进阶索引'],
+
+  ...PACKAGE_WIKI_SYNONYMS
 ]
 
 const WIKI_SYNONYMS: ReadonlyMap<string, string> = new Map(
@@ -258,12 +330,33 @@ function listStemRows(docsRoot: string): StemRow[] {
   return rows
 }
 
-function addExact(map: Map<string, string | null>, keyRaw: string, href: string) {
+function fileRegistrationPriority(relPath: string, fullStem: string): number {
+  const m = fullStem.match(/^(\d+)-/)
+  if (!m) return 5000
+  const n = parseInt(m[1], 10)
+  if (n === 0) return 1000
+  return 2000 + n
+}
+
+type ExactEntry = Readonly<{ href: string; priority: number }>
+
+function addExactPriority(
+  map: Map<string, ExactEntry>,
+  keyRaw: string,
+  href: string,
+  priority: number
+) {
   const k = normWikiTitle(keyRaw)
   if (!k) return
   const cur = map.get(k)
-  if (cur === undefined) map.set(k, href)
-  else if (cur !== href) map.set(k, null)
+  if (!cur || priority > cur.priority) map.set(k, { href, priority })
+}
+
+function applyCanonicalOverrides(map: Map<string, ExactEntry>) {
+  for (const [title, href] of Object.entries(DUPLICATE_CANONICAL)) {
+    const k = normWikiTitle(title)
+    map.set(k, { href, priority: 9000 })
+  }
 }
 
 function scoreStemMatch(wikiTarget: string, row: StemRow): number {
@@ -298,18 +391,24 @@ export type WikiHrefResolver = (targetWoHash: string) => string | undefined
 
 /** 构建维基目标 → href 解析器（构建时跑一次即可） */
 export function createWikiHrefResolver(docsRoot: string): WikiHrefResolver {
-  const exact = new Map<string, string | null>()
+  const exact = new Map<string, ExactEntry>()
   const stems = listStemRows(docsRoot)
 
   for (const row of stems) {
-    addExact(exact, row.full, row.href)
-    addExact(exact, row.stripped, row.href)
+    const rel = row.href.slice(1)
+    const priority = fileRegistrationPriority(rel, row.full)
+    addExactPriority(exact, row.full, row.href, priority)
+    addExactPriority(exact, row.stripped, row.href, priority)
     for (const alias of generateStemAliases(row.stripped)) {
-      addExact(exact, alias, row.href)
+      addExactPriority(exact, alias, row.href, priority)
     }
   }
 
-  for (const [k, v] of WIKI_SYNONYMS.entries()) addExact(exact, k, v)
+  applyCanonicalOverrides(exact)
+
+  for (const [k, v] of WIKI_SYNONYMS.entries()) {
+    addExactPriority(exact, k, v, 10000)
+  }
 
   const scoredResolve = (t: string): string | undefined => {
     const n = normWikiTitle(t)
@@ -340,7 +439,7 @@ export function createWikiHrefResolver(docsRoot: string): WikiHrefResolver {
     if (hitSyn) return hitSyn
 
     const e = exact.get(key)
-    if (e !== undefined && e !== null) return e
+    if (e) return e.href
 
     return scoredResolve(targetWoHash)
   }

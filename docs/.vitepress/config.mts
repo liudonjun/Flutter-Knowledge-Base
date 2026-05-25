@@ -49,7 +49,33 @@ function handbookLandingLink(dirName: string): string {
   return `/${dirName}/${mdStem(pick)}`
 }
 
-/** 当前路径处于某知识库前缀下时在侧栏列出该文件夹内全部 Markdown */
+function sidebarLabel(filename: string): string {
+  return mdStem(filename).replace(/^\d+-/, '')
+}
+
+function sidebarLink(dirName: string, filename: string): string {
+  return `/${dirName}/${mdStem(filename)}`
+}
+
+type HandbookFileGroup = 'index' | 'category' | 'package' | 'topic'
+
+function classifyHandbookFile(dirName: string, filename: string): HandbookFileGroup {
+  if (/^00-.*索引/.test(filename)) return 'index'
+  if (dirName === '13-第三方库') {
+    if (/^0[1-7]-/.test(filename)) return 'category'
+    if (/^\d{2,}-.+详解\.md$/.test(filename)) return 'package'
+  }
+  return 'topic'
+}
+
+function toSidebarItems(dirName: string, filenames: string[]): DefaultTheme.SidebarItem[] {
+  return filenames.map((f) => ({
+    text: sidebarLabel(f),
+    link: sidebarLink(dirName, f)
+  }))
+}
+
+/** 当前路径处于某知识库前缀下时在侧栏分组列出 Markdown */
 function buildHandbookSectionSidebars(): DefaultTheme.Config['sidebar'] {
   const out: Record<string, DefaultTheme.SidebarItem[]> = {}
   for (const dirName of HANDBOOK_DIRS) {
@@ -59,16 +85,39 @@ function buildHandbookSectionSidebars(): DefaultTheme.Config['sidebar'] {
       .readdirSync(dir)
       .filter((f) => f.endsWith('.md'))
       .sort((a, b) => a.localeCompare(b, 'zh-Hans-CN', { numeric: true }))
+
+    const groups: Record<HandbookFileGroup, string[]> = {
+      index: [],
+      category: [],
+      package: [],
+      topic: []
+    }
+    for (const f of files) {
+      groups[classifyHandbookFile(dirName, f)].push(f)
+    }
+
     const title = handbookModuleTitle(dirName)
     const prefix = `/${dirName}/`
+    const sections: DefaultTheme.SidebarItem[] = []
+
+    if (groups.index.length) {
+      sections.push({ text: '模块索引', items: toSidebarItems(dirName, groups.index) })
+    }
+    if (dirName === '13-第三方库' && groups.category.length) {
+      sections.push({ text: '分类长文', items: toSidebarItems(dirName, groups.category) })
+    }
+    if (groups.topic.length) {
+      sections.push({
+        text: dirName === '13-第三方库' ? '专题文章' : title,
+        items: toSidebarItems(dirName, groups.topic)
+      })
+    }
+    if (groups.package.length) {
+      sections.push({ text: '包详解', items: toSidebarItems(dirName, groups.package) })
+    }
+
     out[prefix] = [
-      {
-        text: title,
-        items: files.map((f) => ({
-          text: mdStem(f).replace(/^\d+-/, ''),
-          link: `${prefix}${mdStem(f)}`
-        }))
-      },
+      ...sections,
       {
         text: '知识库导读',
         link: '/handbook/'
@@ -76,6 +125,46 @@ function buildHandbookSectionSidebars(): DefaultTheme.Config['sidebar'] {
     ]
   }
   return out
+}
+
+function wikiBacklogCount(): number {
+  const backlogFile = path.join(docsRoot, 'handbook/wiki-link-backlog.md')
+  if (!fs.existsSync(backlogFile)) return 0
+  const m = fs.readFileSync(backlogFile, 'utf8').match(/待处理（唯一标题）\*\*：(\d+)/)
+  return m ? Number.parseInt(m[1], 10) : 0
+}
+
+function buildHandbookHubSidebar(): DefaultTheme.SidebarItem[] {
+  const backlog = wikiBacklogCount()
+  const maintenanceItems: DefaultTheme.SidebarItem[] = [
+    {
+      text: backlog > 0 ? `维基待处理 (${backlog})` : '维基链接清单',
+      link: '/handbook/wiki-link-backlog'
+    },
+    { text: '13/14 补充计划', link: '/handbook/13-14-supplement-plan' }
+  ]
+
+  return [
+    { text: '总览', link: '/handbook/' },
+    {
+      text: '站点维护',
+      collapsed: true,
+      items: maintenanceItems
+    },
+    {
+      text: '笔记与辅助',
+      collapsed: true,
+      items: [
+        { text: '学习笔记', link: '/笔记/学习笔记' },
+        { text: '笔记模板', link: '/模板/笔记模板' },
+        { text: '学习资源汇总', link: '/资源/学习资源' }
+      ]
+    },
+    {
+      text: '按模块浏览',
+      items: handbookNavItems()
+    }
+  ]
 }
 
 function handbookNavItems(): DefaultTheme.SidebarItem[] {
@@ -173,22 +262,7 @@ export default defineConfig({
         },
         { text: '知识库导读', link: '/handbook/' }
       ],
-      '/handbook/': [
-        { text: '总览', link: '/handbook/' },
-        { text: '维基链接待处理清单', link: '/handbook/wiki-link-backlog' },
-        {
-          text: '笔记与辅助',
-          items: [
-            { text: '学习笔记', link: '/笔记/学习笔记' },
-            { text: '笔记模板', link: '/模板/笔记模板' },
-            { text: '学习资源汇总', link: '/资源/学习资源' }
-          ]
-        },
-        {
-          text: '按模块浏览',
-          items: handbookNavItems()
-        }
-      ],
+      '/handbook/': buildHandbookHubSidebar(),
       '/笔记/': [
         { text: '学习笔记', link: '/笔记/学习笔记' },
         { text: '知识库导读', link: '/handbook/' }

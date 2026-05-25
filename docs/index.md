@@ -22,7 +22,7 @@ features:
     details: 理论学习与实践相结合，提供丰富的实战项目和代码示例。
   - icon: 🔗
     title: 知识网络
-    details: 通过链接建立知识关联，使用图谱可视化知识结构，便于复习和回顾。
+    details: 通过双括号维基链接建立知识关联，模块索引与专题页互相跳转，便于复习和回顾。
   - icon: 🚀
     title: 持续更新
     details: 定期更新学习内容，跟进 Flutter 最新特性和最佳实践。
@@ -48,7 +48,7 @@ features:
 ## 📊 知识库概览
 
 - **模块数量**: 14个主要模块
-- **文章数量**: 115+ 篇详细文章
+- **文章数量**: 500+ 篇知识库长文（全站 540+ Markdown）
 - **学习路径**: 从入门到精通
 - **实战项目**: 10+ 完整项目
 - **学习资源**: 100+ 精选资源
@@ -75,7 +75,7 @@ features:
 ## 🔗 相关链接
 
 - [完整知识库（十四模块原文）](/handbook/)
-- [维基链接待处理清单](/handbook/wiki-link-backlog)
+- [维基链接清单](/handbook/wiki-link-backlog)（维护用，当前 backlog 为 0）
 
 - [Flutter 官方文档](https://flutter.dev/docs)
 - [Dart 官方文档](https://dart.dev/guides)
