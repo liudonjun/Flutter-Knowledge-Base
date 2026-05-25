@@ -2,12 +2,14 @@
 # 文档：https://docs.netlify.com/configure-builds/file-based-configuration/
 
 [build]
-  command = "npm run build"
+  command = "pnpm run build"
   publish = "docs/.vitepress/dist"
 
 [build.environment]
   # 与 Netlify 当前 LTS 对齐；可按需在 Netlify UI 或此处调整
   NODE_VERSION = "20"
+  # 500+ 页面 SSR 预渲染需更大堆内存（默认 ~2GB 会在 Netlify 上 OOM）
+  NODE_OPTIONS = "--max-old-space-size=4096"
 
 # 静态资源长期缓存（VitePress 构建产物带内容哈希）
 [[headers]]
