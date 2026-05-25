@@ -167,7 +167,7 @@ function buildHandbookHubSidebar(): DefaultTheme.SidebarItem[] {
   ]
 }
 
-function handbookNavItems(): DefaultTheme.SidebarItem[] {
+function handbookNavItems(): DefaultTheme.NavItemWithLink[] {
   return HANDBOOK_DIRS.map((dirName) => ({
     text: handbookModuleTitle(dirName),
     link: handbookLandingLink(dirName)
@@ -178,6 +178,14 @@ export default defineConfig({
   title: 'Flutter 知识库',
   description: '系统化的 Flutter 开发学习资源',
   lang: 'zh-CN',
+
+  vue: {
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag) => tag.startsWith('fluent-')
+      }
+    }
+  },
 
   markdown: {
     config(md: MarkdownIt) {

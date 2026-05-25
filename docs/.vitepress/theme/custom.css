@@ -1,0 +1,22 @@
+:root {
+  --fluent-accent: #02569b;
+  --fluent-accent-hover: #014a85;
+  --fluent-accent-pressed: #013a6b;
+  --fluent-accent-tint: #e8f4fd;
+
+  --vp-c-brand-1: #02569b;
+  --vp-c-brand-2: #0175c2;
+  --vp-c-brand-3: #014a85;
+}
+
+.dark {
+  --fluent-accent: #54c5f8;
+  --fluent-accent-hover: #7dd3fc;
+  --fluent-accent-pressed: #29b6f6;
+  --fluent-accent-tint: #0a2a3d;
+}
+
+.fluent-main .vp-doc {
+  max-width: none;
+  padding: 0;
+}

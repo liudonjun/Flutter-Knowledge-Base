@@ -22,6 +22,10 @@
   "author": "Hermes Agent",
   "license": "MIT",
   "devDependencies": {
-    "vitepress": "^1.0.0"
+    "@fluentui/web-components": "^2.6.1",
+    "@microsoft/fast-element": "^2.10.4",
+    "@types/node": "^25.9.1",
+    "vitepress": "^1.0.0",
+    "vitepress-template-fluent": "^0.1.0"
   }
 }
